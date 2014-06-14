@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "EditAlbum";
+    Layout = "~/Views/Shared/_Adminka.cshtml";
+}
+
+<h2>EditAlbum</h2>
+
+<form action="/AdminFoto/EditAlbum/7" method="post" enctype="multipart/form-data">
+    <input name="Opisanie" />
+    @*<input type="hidden" name="IdAlbum" value="7" />*@
+    <input name="file" type="file" />
+    <button type="submit">Оправить</button>
+</form>

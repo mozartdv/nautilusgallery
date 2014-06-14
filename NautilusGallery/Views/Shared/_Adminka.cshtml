@@ -1,16 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
+
         <meta charset="utf-8" />
 
         <title>@Page.Title</title>
         @RenderSection("head", required: false)
-        
-        <link href="~/Content/Css/Style.css" rel="stylesheet" />
+        <link href="~/Content/Css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
-       
         @RenderBody()
-       
+        <script src="~/Content/JS/bootstrap.min.js"></script>
     </body>
 </html>

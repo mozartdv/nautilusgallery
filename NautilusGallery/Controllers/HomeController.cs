@@ -16,5 +16,12 @@ namespace NautilusGallery.Controllers
             return View();
         }
 
+        public ActionResult Album(int id)
+        {
+
+            return Content("Просмотр альбома" + " " + id.ToString());
+        }
+
+
     }
 }

@@ -13,13 +13,17 @@ namespace NautilusGallery.Controllers
 
         public ActionResult Index()
         {
-            
 
-            using ( mozartdv_34Entities db= new mozartdv_34Entities() )
+            List<GalleryAlbum> listga = new List<GalleryAlbum>();
+            using (mozartdv_34Entities de = new mozartdv_34Entities())
             {
-                var ob = db.GalleryAlbum.Where(x => x.Id == 6).FirstOrDefault();
-                
+                var lga = de.GalleryAlbum.ToList();
+                foreach (var item in lga)
+                {
+                    listga.Add(item);
+                }
             }
+            ViewBag.ListOfAlbum = listga;
 
             return View();
         }

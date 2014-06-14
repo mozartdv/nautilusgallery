@@ -13,6 +13,16 @@ namespace NautilusGallery.Controllers
 
         public ActionResult Index()
         {
+            List<GalleryAlbum> listga = new List<GalleryAlbum>();
+            using (mozartdv_34Entities de = new mozartdv_34Entities())
+            {
+                var lga = de.GalleryAlbum.ToList();
+                foreach (var item in lga)
+                {
+                    listga.Add(item);
+                }
+            }
+            ViewBag.ListOfAlbum = listga;
             return View();
         }
 
@@ -65,17 +75,26 @@ namespace NautilusGallery.Controllers
                 GalleryAlbum ga = de.GalleryAlbum.Where(x => x.Id == id).First();
                 ga.Text = Opisanie;
                 de.SaveChanges();
-                foreach (var item in file)
-                {
-                    string path = System.IO.Path.Combine(Server.MapPath("~/Content/UploadImage"), System.IO.Path.GetFileName(item.FileName));
-                    item.SaveAs(path);
-                    GalleryFoto gf = new GalleryFoto();
-                    gf.Id_Album = id;
-                    gf.PathImage = item.FileName;
-                    de.GalleryFoto.Add(gf);
-                    de.SaveChanges();
+                
+                    foreach (var item in file)
+                    {
+                        if (item != null && item.ContentLength > 0)
+                        {
+                            string path = System.IO.Path.Combine(Server.MapPath("~/Content/UploadImage"), System.IO.Path.GetFileName(item.FileName));
+                            item.SaveAs(path);
+                            GalleryFoto gf = new GalleryFoto();
+                            gf.Id_Album = id;
+                            gf.PathImage = item.FileName;
+                             de.GalleryFoto.Add(gf);
+                            de.SaveChanges();
+                            
+                        }
                     
-                }
+                    
+                    }
+                
+
+                
                 
             }
 
@@ -99,6 +118,30 @@ namespace NautilusGallery.Controllers
             }
 
            return RedirectToAction("EditAlbum/" + IdAlbum, "AdminFoto");
+        }
+
+        public ActionResult DeleteAlbum(int id)
+        {
+            using (mozartdv_34Entities de=new mozartdv_34Entities())
+            {
+                List<GalleryFoto> lgf = de.GalleryFoto.Where(x => x.Id_Album == id).ToList();
+                foreach (var item in lgf)
+                {
+                    string fullPath = Request.MapPath("~/Content/UploadImage/" + item.PathImage);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        System.IO.File.Delete(fullPath);
+                        de.GalleryFoto.Remove(item);
+                        de.SaveChanges();
+                    
+                    }
+                    
+                }
+                GalleryAlbum ga = de.GalleryAlbum.Where(x => x.Id == id).First();
+                de.GalleryAlbum.Remove(ga);
+                de.SaveChanges();
+            }
+            return RedirectToAction("Index", "AdminFoto");
         }
     }
 }

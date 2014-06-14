@@ -3,4 +3,26 @@
     Layout = "~/Views/Shared/_Adminka.cshtml";
 }
 
-<h2>Здесь будут выводиться все альбомы</h2>
+
+<div class="container">
+    <h2>Здесь выводятся все фотоальбомы</h2>
+    <div class="span12">
+        <a class="btn btn-success" style="width:100%;" href="/AdminFoto/AddAlbum">Создать новый альбом</a>
+    </div>
+    <div class="row">
+        @foreach (var item in ViewBag.ListOfAlbum)
+        { 
+            
+            <div class="span7">
+                <label>@item.Text</label>
+            </div>
+            <div class="span2">
+                <a href="/AdminFoto/EditAlbum/@item.Id">Редактировать</a>
+            </div>
+            <div class="span3">
+                <a href="/AdminFoto/DeleteAlbum/@item.Id">Удалить альбом</a>
+            </div>
+        
+        }
+    </div>
+</div>

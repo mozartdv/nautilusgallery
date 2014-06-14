@@ -3,4 +3,28 @@
     Page.Title = "Шаблон работает";
 }
 
-<h2>Ведется строительство.</h2>
+<div class="container_scroll">
+    <span id="scroll_left" class="left"><</span>
+    <span id="scroll_right" class="right">></span>
+    <div class="container_img">
+        @*<a href="#">
+            <img src="~/Content/Img/test.jpg" />
+        </a>*@
+        @foreach (var item in ViewBag.ListOfAlbum)
+        { 
+            <a href="#">
+                <img src="/GetAlbum/Preview/@item.Id" />
+            </a>
+        
+        }
+    </div>
+
+
+</div>
+
+<div class="container_gallery">
+    
+
+</div>
+
+<script src="~/Content/JS/jsalbum.js"></script>

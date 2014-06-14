@@ -5,9 +5,33 @@
 
 <h2>EditAlbum</h2>
 
-<form action="/AdminFoto/EditAlbum/7" method="post" enctype="multipart/form-data">
-    <input name="Opisanie" />
-    @*<input type="hidden" name="IdAlbum" value="7" />*@
-    <input name="file" type="file" />
-    <button type="submit">Оправить</button>
-</form>
+
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <form action="/AdminFoto/EditAlbum/@ViewBag.IdAlbum" method="post" enctype="multipart/form-data">
+                <input style="width:100%" name="Opisanie" value="@ViewBag.Opisanie" />
+                @*<input type="hidden" name="IdAlbum" value="7" />*@
+                <input multiple="multiple" accept="image/jpeg" name="file" type="file" />
+                <button class="btn btn-success" type="submit">Добавить фото или сохранить описание</button>
+            </form>
+        </div>
+        
+    </div>
+    
+        @foreach (var item in ViewBag.FotoList)
+{
+    <div class="row">
+        <div class="span8">
+            <img style="max-height:400px; max-width:400px;" src="~/Content/UploadImage/@item.PathImage" />
+        </div>
+        <div class="span4">
+            <a href="/AdminFoto/DeleteFoto?IdFoto=@item.Id&IdAlbum=@item.Id_Album">Удалить фотографию</a>
+        </div>
+        <div class="span12"></div>
+    </div>
+            
+}
+    
+</div>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "AddAlbum";
+    Layout = "~/Views/Shared/_Adminka.cshtml";
+}
+
+
+<div class="container">
+    <h2>Создание нового альбома</h2>
+    <div class="row">
+        
+            <form action="/AdminFoto/AddAlbum" method="post">
+                <div class="span8">
+                    <input style="width:100%;" name="opisanie" type="text" placeholder="Укажи описание альбома" />
+                    
+                </div>
+                <div class="span4">
+                    <button class="btn btn-success" type="submit">Создать новый фотоальбом</button>
+                </div>
+            </form>
+        
+    </div>
+</div>

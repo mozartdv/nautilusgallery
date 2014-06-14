@@ -13,6 +13,14 @@ namespace NautilusGallery.Controllers
 
         public ActionResult Index()
         {
+            
+
+            using ( mozartdv_34Entities db= new mozartdv_34Entities() )
+            {
+                var ob = db.GalleryAlbum.Where(x => x.Id == 6).FirstOrDefault();
+                
+            }
+
             return View();
         }
 

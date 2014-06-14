@@ -39,10 +39,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -114,6 +122,27 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminFotoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="GalleryAlbum.cs">
+      <DependentUpon>GalleryFotoData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryFoto.cs">
+      <DependentUpon>GalleryFotoData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryFotoData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GalleryFotoData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryFotoData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GalleryFotoData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryFotoData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GalleryFotoData.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +193,23 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="GalleryFotoData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GalleryFotoData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="GalleryFotoData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GalleryFotoData.edmx</DependentUpon>
+      <LastGenOutput>GalleryFotoData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="GalleryFotoData.edmx.diagram">
+      <DependentUpon>GalleryFotoData.edmx</DependentUpon>
+    </Content>
+    <Content Include="GalleryFotoData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GalleryFotoData.edmx</DependentUpon>
+      <LastGenOutput>GalleryFotoData.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\PubGallery.pubxml" />
     <Content Include="Views\Shared\_Adminka.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -171,6 +217,9 @@
     <Content Include="Views\AdminFoto\Index.cshtml" />
     <Content Include="Views\Home\AddAlbum.cshtml" />
     <Content Include="Views\AdminFoto\EditAlbum.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

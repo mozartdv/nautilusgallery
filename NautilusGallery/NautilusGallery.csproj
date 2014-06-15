@@ -122,6 +122,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminFotoController.cs" />
     <Compile Include="Controllers\GetAlbumController.cs" />
+    <Compile Include="Controllers\GetFotoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="GalleryAlbum.cs">
       <DependentUpon>GalleryFotoData.tt</DependentUpon>
@@ -167,6 +168,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\JS\jsalbum.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\JS\jsfoto.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Global.asax" />
@@ -225,6 +229,8 @@
     <Content Include="Views\AdminFoto\AddAlbum.cshtml" />
     <Content Include="Views\AdminFoto\EditAlbum.cshtml" />
     <Content Include="Views\GetAlbum\Main.cshtml" />
+    <Content Include="Views\Home\Album.cshtml" />
+    <Content Include="Views\GetFoto\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

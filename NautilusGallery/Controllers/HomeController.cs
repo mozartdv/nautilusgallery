@@ -30,8 +30,18 @@ namespace NautilusGallery.Controllers
 
         public ActionResult Album(int id)
         {
-
-            return Content("Просмотр альбома" + " " + id.ToString());
+            List<GalleryFoto> listgf = new List<GalleryFoto>();
+            using (mozartdv_34Entities de = new mozartdv_34Entities())
+            {
+                var lgf = de.GalleryFoto.Where(x => x.Id_Album == id).ToList();
+                foreach (var item in lgf)
+                {
+                    listgf.Add(item);
+                }
+            }
+            ViewBag.ListOfFoto = listgf;
+            
+            return View();
         }
 
 

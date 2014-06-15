@@ -17,7 +17,7 @@ namespace NautilusGallery.Controllers
             List<GalleryAlbum> listga = new List<GalleryAlbum>();
             using (mozartdv_34Entities de = new mozartdv_34Entities())
             {
-                var lga = de.GalleryAlbum.ToList();
+                var lga = de.GalleryAlbum.OrderByDescending(x=>x.Id).ToList();
                 foreach (var item in lga)
                 {
                     listga.Add(item);

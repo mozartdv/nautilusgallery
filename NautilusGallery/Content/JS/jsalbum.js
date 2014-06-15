@@ -21,7 +21,7 @@ $(window).load(function () {
     var position = $("div.container_gallery").position();
     console.log(position.top);
     if (position.top < 450) {
-        $("div.container_gallery").css("top", "150px");
+        $("div.container_gallery").css("top", "190px");
         $("div.container_gallery").css("margin-top", "0px");
     }
 
